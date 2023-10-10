@@ -147,7 +147,8 @@ def main():
         for line in f:
             students.append(line.strip())
 
-    parse_absent_students(c, " ".join(args.absent), students)
+    if args.absent:
+        parse_absent_students(c, " ".join(args.absent), students)
 
     # LOL just for memes
     sleep(1)
