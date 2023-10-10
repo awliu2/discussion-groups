@@ -7,24 +7,42 @@ from rich.console import Console
 from rich.table import Table
 from rich.prompt import Prompt
 
-from difflib import get_close_matches
+from thefuzz import fuzz
 
 
 WARNING_MSG = ":warning-emoji:  WARNING: no exact match for {} found in the roster."
 REMOVED_MSG = ":white_check_mark:  Removed {} from the roster."
 
 
+def get_close_matches(absentee, students, thres=60):
+    res = []
+
+    for student in students:
+        first_name, last_name = student.split()
+
+        if (fuzz.ratio(absentee, student) >= thres or
+            fuzz.ratio(absentee, first_name) >= thres or
+            fuzz.ratio(absentee, last_name) >= thres):
+            res.append(student)
+
+    return res
+
+
 def parse_absent_students(c, absent_list, students):
     """
     Removes absent students from the roster
     """
+    absent_list = absent_list.split(", ")
+
     for absentee in absent_list:
         if absentee in students:
             students.remove(absentee)
             continue
 
         c.print(f"[yellow]{WARNING_MSG.format(absentee)}[/yellow]")
-        matches = get_close_matches(absentee, students, cutoff=0.5)
+
+        matches = get_close_matches(absentee, students)
+
         if not matches:
             continue
 
@@ -55,7 +73,6 @@ def parse_absent_students(c, absent_list, students):
         index = int(user_input) - 1
         students.remove(matches[index])
         c.print(f"[green]{REMOVED_MSG.format(matches[index])}[/green]")
-        continue
 
 
 def tabulate_groups(c, groups, extra_member):
@@ -81,7 +98,7 @@ def tabulate_groups(c, groups, extra_member):
         elif "Manager" not in group:
             table.add_row(
                 str(i + 1),
-                "None",
+                "[grey15]None[/grey15]",
                 group["Recorder"],
                 group["Spokesperson"],
             )
@@ -125,12 +142,12 @@ def main():
 
     args = parser.parse_args()
     students = []
-    
+
     with open(args.filename, "r") as f:
         for line in f:
             students.append(line.strip())
 
-    parse_absent_students(c, args.absent, students)
+    parse_absent_students(c, " ".join(args.absent), students)
 
     # LOL just for memes
     sleep(1)
