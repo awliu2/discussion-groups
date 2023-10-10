@@ -6,7 +6,7 @@ usage: groups.py [-h] [--absent ABSENT [ABSENT ...]] filename
 Randomly assign groups for discussion sections
 
 positional arguments:
-  filename              txt file containing student names (one per line), default: students.txt
+  filename              txt file containing student names (one per line), required argument
 
 options:
   -h, --help            show this help message and exit
