@@ -1,5 +1,4 @@
-# discussion-groups
-python script to generate groups for cs141 discussion sections
+## python script to generate groups for cs141 discussion sections
 
 ```
 usage: groups.py [-h] [--absent ABSENT [ABSENT ...]] filename
@@ -7,7 +6,7 @@ usage: groups.py [-h] [--absent ABSENT [ABSENT ...]] filename
 Randomly assign groups for discussion sections
 
 positional arguments:
-  filename              txt file containing student names (one per line), default: students.txt
+  filename              txt file containing student names (one per line), required argument
 
 options:
   -h, --help            show this help message and exit
@@ -15,7 +14,7 @@ options:
                         list of absent students to exclude from group generation
 ```
 
-## Example
+## example
 
 ```
 $ python3 groups.py example_roster -a Olivia
