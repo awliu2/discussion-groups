@@ -125,7 +125,7 @@ def main():
 
     args = parser.parse_args()
     students = []
-    filename = args.filename
+    
     with open(args.filename, "r") as f:
         for line in f:
             students.append(line.strip())
