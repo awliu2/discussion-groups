@@ -14,7 +14,7 @@ options:
                         list of absent students to exclude from group generation
 ```
 
-## Example
+## example
 
 ```
 $ python3 groups.py example_roster -a Olivia
