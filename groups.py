@@ -107,7 +107,6 @@ def main():
         "filename",
         type=str,
         help="path to a file containing student names (one per line)",
-        
     )
     parser.add_argument(
         "--absent",
