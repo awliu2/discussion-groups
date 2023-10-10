@@ -1,5 +1,4 @@
-# discussion-groups
-python script to generate groups for cs141 discussion sections
+## python script to generate groups for cs141 discussion sections
 
 ```
 usage: groups.py [-h] [--absent ABSENT [ABSENT ...]] filename
