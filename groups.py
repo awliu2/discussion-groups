@@ -70,13 +70,20 @@ def tabulate_groups(c, groups, extra_member):
     if extra_member:
         table.add_column("Extra Member", justify="left")
     for i, group in enumerate(groups):
-        if extra_member:
+        if "Extra Member" in group:
             table.add_row(
                 str(i + 1),
                 group["Manager"],
                 group["Recorder"],
                 group["Spokesperson"],
-                group["Extra Member"] if "Extra Member" in group else "",
+                group["Extra Member"],
+            )
+        elif "Manager" not in group:
+            table.add_row(
+                str(i + 1),
+                "None",
+                group["Recorder"],
+                group["Spokesperson"],
             )
         else:
             table.add_row(
@@ -137,7 +144,6 @@ def main():
     groups = []
     i = 0
     extra_member = False
-    group_of_two = False
 
     while i < len(students):
         # creates a group of 4 if there's only 1 student left
@@ -147,19 +153,24 @@ def main():
             break
 
         group_of_two = i + 2 == len(students)
-        group = {
-            "Manager": students[i],
-            "Recorder": students[i + 1] if i + 1 < len(students) else None,
-            "Spokesperson": students[i + 2]
-            if i + 2 < len(students)
-            else students[i + 1],
-        }
+        # no manager role for groups of 2
+        if group_of_two:
+            group = {
+                "Recorder": students[i],
+                "Spokesperson": students[i + 1],
+            }
+        else:
+            group = {
+                "Manager": students[i],
+                "Recorder": students[i + 1],
+                "Spokesperson": students[i + 2]
+            }
         groups.append(group)
         i += 3
 
     if group_of_two:
         c.print(
-            f"[yellow]Group of 2: {group['Manager']} and {group['Spokesperson']}[/yellow]"
+            f"[yellow]Group of 2: {group['Recorder']} and {group['Spokesperson']}[/yellow]"
         )
 
     tabulate_groups(c, groups, extra_member=extra_member)
