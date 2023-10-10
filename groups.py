@@ -36,7 +36,7 @@ def parse_absent_students(c, absent_list, students):
             )
             if user_input == "y":
                 students.remove(matches[0])
-                c.print(f"[green]REMOVED_MSG.format(matches[index])[/green]")
+                c.print(f"[green]{REMOVED_MSG.format(matches[0])}[/green]")
                 continue
             else:
                 c.print(f"[yellow]Skipping {absentee}[/yellow]")
@@ -54,7 +54,7 @@ def parse_absent_students(c, absent_list, students):
             continue
         index = int(user_input) - 1
         students.remove(matches[index])
-        c.print(f"[green]REMOVED_MSG.format(matches[index])[/green]")
+        c.print(f"[green]{REMOVED_MSG.format(matches[index])}[/green]")
         continue
 
 
