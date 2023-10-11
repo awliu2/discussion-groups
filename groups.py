@@ -18,7 +18,10 @@ def get_close_matches(absentee, students, thres=60):
     res = []
 
     for student in students:
-        first_name, last_name = student.split()
+        space_idx = student.index(" ")
+
+        # first name is everything before the first space
+        first_name, last_name = student[:space_idx], student[space_idx + 1:]
 
         if (fuzz.ratio(absentee, student) >= thres or
             fuzz.ratio(absentee, first_name) >= thres or
