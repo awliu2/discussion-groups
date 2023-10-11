@@ -17,22 +17,22 @@ options:
 ## example
 
 ```
-$ python3 groups.py example_roster -a Olivia
+$ python3 groups.py example_roster -a alex, ava
 ⚠️  WARNING: no exact match for alex found in the roster.
 Did you mean Alex de Minaur?  [y/n]: y
 ✅  Removed Alex de Minaur from the roster.
-⚠️  WARNING: no exact match for charlotte found in the roster.
-        1: Charlotte Spencer
-        2: Charlotte Hong
-Did you mean one of the above? choices -> [1/2/n]: 2
-✅  Removed Charlotte Hong from the roster.
+⚠️  WARNING: no exact match for ava found in the roster.
+        1: Ava Martinez
+        2: Ava Thompson
+Did you mean one of the above? choices -> [1/2/n]: 1
+✅  Removed Ava Martinez from the roster.
 Generating groups for 13 students
-┏━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ Group # ┃ Manager          ┃ Recorder       ┃ Spokesperson      ┃ Extra Member ┃
-┡━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━┩
-│    1    │ Mia Moore        │ Ethan Anderson │ Aiden Clark       │              │
-│    2    │ Emma Taylor      │ Jackson Li     │ Charlotte Spencer │              │
-│    3    │ Noah Tran        │ Lucas Turner   │ Olivia Rodriguez  │              │
-│    4    │ Isabella Johnson │ Ava Martinez   │ Liam Thompson     │ Sophia Davis │
-└─────────┴──────────────────┴────────────────┴───────────────────┴──────────────┘
+┏━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ Group # ┃ Manager        ┃ Recorder         ┃ Spokesperson   ┃ Extra Member     ┃
+┡━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│    1    │ Aiden Clark    │ Sophia Davis     │ Noah Tran      │                  │
+│    2    │ Lucas Turner   │ Isabella Johnson │ Emma Taylor    │                  │
+│    3    │ Ethan Anderson │ Jackson Li       │ Mia Moore      │                  │
+│    4    │ Mason Spencer  │ Ava Thompson     │ Charlotte Hong │ Olivia Rodriguez │
+└─────────┴────────────────┴──────────────────┴────────────────┴──────────────────┘
 ```
