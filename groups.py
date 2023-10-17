@@ -35,7 +35,10 @@ def parse_absent_students(c, absent_list, students):
     """
     Removes absent students from the roster
     """
-    absent_list = absent_list.split(", ")
+
+    # delimit on commas, and strip leading + trailing whitespace
+    absent_list = [name.strip() for name in absent_list.split(",")]
+
 
     for absentee in absent_list:
         if absentee in students:
@@ -140,7 +143,7 @@ def main():
         "-a",
         default=[],
         nargs="+",
-        help="list of absent students to exclude from group generation",
+        help="comma separated list of absent students to exclude from group generation",
     )
 
     args = parser.parse_args()
